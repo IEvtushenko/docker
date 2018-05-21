@@ -8,6 +8,7 @@ MAINTAINER PHPtoday.ru <info@phptoday.ru>
 # Для установки модулей используем команду docker-php-ext-install.
 # На каждый RUN создается новый слой в образе, поэтому рекомендуется объединять команды.
 RUN apt-get update && apt-get install -y \
+        nano \
         curl \
         wget \
         git \
@@ -19,11 +20,18 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
+RUN yes | pecl install xdebug \
+    && echo "zend_extension=$(find $(php -i |grep extension_dir |cut -d " " -f 3) -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+#    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_autostart=on" >> /usr/local/etc/php/conf.d/xdebug.ini \
+    && echo "xdebug.remote_connect_back=on" >> /usr/local/etc/php/conf.d/xdebug.ini
+
 # Куда же без composer'а.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Добавим свой php.ini, можем в нем определять свои значения конфига
-ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
+#ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 
 # Указываем рабочую директорию для PHP
 WORKDIR /var/www

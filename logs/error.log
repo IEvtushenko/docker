@@ -1,0 +1,10 @@
+2018/05/18 07:12:19 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/18 07:15:25 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/18 07:16:24 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/18 07:16:41 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/18 07:36:45 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/18 07:58:06 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/21 16:33:45 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/21 16:36:31 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/21 16:44:28 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/symfony-test.conf:11
+2018/05/21 16:50:30 [error] 5#5: *1 open() "/var/www/symfony.test/favicon.ico" failed (2: No such file or directory), client: 11.5.0.1, server: symfony.test, request: "GET /favicon.ico HTTP/1.1", host: "11.5.0.1", referrer: "http://11.5.0.1/"

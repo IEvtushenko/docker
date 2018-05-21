@@ -22,6 +22,7 @@ services:
     php:
         # у нас свой образ для PHP, указываем путь к нему и говорим что его надо собрать
         build: ./images/php
+#        image: php
         # этот образ будет общаться с mysql
         links:
             - mysql
@@ -41,9 +42,6 @@ services:
             - "3306:3306"
         volumes:
             - ./mysql:/var/lib/mysql
-        # задаем пароль для root пользователя
-        environment:
-            MYSQL_ROOT_PASSWORD: secret
         networks:
             - app
 networks:
@@ -51,5 +49,5 @@ networks:
     driver: bridge
     ipam:
      config:
-       - subnet: 11.5.0.0/16
-         gateway: ${HOSTNAME}
+       - subnet: ${DOCKER_SUBNET}
+         gateway: ${DOCKER_GATEWAY}
