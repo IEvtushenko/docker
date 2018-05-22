@@ -29,6 +29,9 @@ services:
         # монтируем директорию с проектами
         volumes:
             - ./www:/var/www
+        environment:
+            PHP_IDE_CONFIG: "serverName=${DOCKER_GATEWAY}"
+            XDEBUG_CONFIG:  "remote_host=${DOCKER_GATEWAY}"
         networks:
             - app
     mysql:
